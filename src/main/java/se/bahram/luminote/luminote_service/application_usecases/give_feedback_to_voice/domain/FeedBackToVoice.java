@@ -2,7 +2,7 @@ package se.bahram.luminote.luminote_service.application_usecases.give_feedback_t
 
 import java.util.List;
 
-public record FeedBackToVoice(String feedback, List<String> suggestions) {
+public record FeedBackToVoice(String feedback, List<String> suggestions, List<String> metaphors, List<String> examples) {
 
     public FeedBackToVoice {
         if (feedback == null || feedback.isBlank()) {

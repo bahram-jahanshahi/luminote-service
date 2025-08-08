@@ -28,6 +28,8 @@ public class HearTheVoiceByMentorAiAgentService implements HearTheVoiceByMentor_
                 Return the feedback as a JSON object with the following fields:
                 - feedback (String)
                 - suggestions (List of 3 concise suggestions)
+                - metaphors (List of 3 metaphors)
+                - examples (List of 3 examples)
                 """.formatted(actualDescriptionOfTheImage, voiceOfImageWrittenByUser);
 
         log.info("Executing HearTheVoiceByMentorService with prompt: {}", prompt);

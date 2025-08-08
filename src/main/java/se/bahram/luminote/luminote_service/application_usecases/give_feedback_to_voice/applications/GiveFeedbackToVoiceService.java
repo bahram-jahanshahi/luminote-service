@@ -31,7 +31,9 @@ public class GiveFeedbackToVoiceService implements GiveFeedbackToVoice_UseCase {
 
         FeedBackToVoice feedBackToVoice = new FeedBackToVoice(
                 mentorFeedBackForVoiceOfImage.feedback(),
-                mentorFeedBackForVoiceOfImage.suggestions()
+                mentorFeedBackForVoiceOfImage.suggestions(),
+                mentorFeedBackForVoiceOfImage.metaphors(),
+                mentorFeedBackForVoiceOfImage.examples()
         );
 
         log.info("feedBackToVoice {}", feedBackToVoice);
