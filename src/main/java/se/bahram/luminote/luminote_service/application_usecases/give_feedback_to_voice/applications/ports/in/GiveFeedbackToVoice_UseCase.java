@@ -4,5 +4,5 @@ import se.bahram.luminote.luminote_service.application_usecases.give_feedback_to
 
 public interface GiveFeedbackToVoice_UseCase {
 
-    FeedBackToVoice execute(Long imageId, String voiceOfImageWrittenByUser) throws Exception;
+    FeedBackToVoice execute(Long userId, Long imageId, String voiceOfImageWrittenByUser) throws Exception;
 }

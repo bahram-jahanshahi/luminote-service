@@ -18,9 +18,9 @@ public class GiveFeedbackToVoiceService implements GiveFeedbackToVoice_UseCase {
     }
 
     @Override
-    public FeedBackToVoice execute(Long imageId, String voiceOfImageWrittenByUser) throws Exception {
+    public FeedBackToVoice execute(Long userId, Long imageId, String voiceOfImageWrittenByUser) throws Exception {
 
-        log.info("Starting GiveFeedbackToVoiceService for imageId: {}, voiceOfImageWrittenByUser: {}", imageId, voiceOfImageWrittenByUser);
+        log.info("Starting giveFeedbackToVoice for userId: {} imageId: {}, voiceOfImageWrittenByUser: {}", userId, imageId, voiceOfImageWrittenByUser);
 
         MentorFeedBackForVoiceOfImage mentorFeedBackForVoiceOfImage =
                 this.hearTheVoiceByMentorAiAgentUseCase

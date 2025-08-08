@@ -3,12 +3,10 @@ package se.bahram.luminote.luminote_service.application_usecases.give_feedback_t
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import se.bahram.luminote.luminote_service.application_usecases.give_feedback_to_voice.applications.ports.in.GiveFeedbackToVoice_UseCase;
 import se.bahram.luminote.luminote_service.application_usecases.give_feedback_to_voice.domain.FeedBackToVoice;
+import se.bahram.luminote.luminote_service.application_usecases.give_feedback_to_voice.domain.GiveFeedbackToVoice_UseCaseCommand;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -22,15 +20,15 @@ public class GiveFeedbackToVoice_RestController {
         this.giveFeedbackToVoiceUseCase = giveFeedbackToVoiceUseCase;
     }
 
-    @GetMapping("/give-feedback-to-voice")
-    public ResponseEntity<FeedBackToVoice> giveFeedbackToVoice(Long imageId, String voiceOfImageWrittenByUser) {
+    @PostMapping("/give-feedback-to-voice")
+    public ResponseEntity<FeedBackToVoice> giveFeedbackToVoice(@RequestBody GiveFeedbackToVoice_UseCaseCommand command) {
 
-        log.info("Starting giveFeedbackToVoice for imageId: {}, voiceOfImageWrittenByUser: {}", imageId, voiceOfImageWrittenByUser);
+        log.info("Starting giveFeedbackToVoice for userId: {} imageId: {}, voiceOfImageWrittenByUser: {}", command.userId(), command.imageId(), command.voiceOfImageWrittenByUser());
 
         FeedBackToVoice feedBackToVoice = null;
         try {
             feedBackToVoice = this.giveFeedbackToVoiceUseCase
-                    .execute(imageId, voiceOfImageWrittenByUser);
+                    .execute(command.userId(), command.imageId(), command.voiceOfImageWrittenByUser());
 
             return  ResponseEntity.ok(feedBackToVoice);
         } catch (Exception e) {
